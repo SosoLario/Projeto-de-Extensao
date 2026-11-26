@@ -91,7 +91,6 @@ O script inicial cria a conta principal de gestão e os usuários de exemplo fic
 | **Aluno** | `joao.lima@email.com` | `joao123` |
 | **Aluno** | `lucas.carmargo@email.com` | `lucas123` |
 
-Troque ou recrie as senhas antes de compartilhar a aplicação fora de apresentação acadêmica. Administradores podem cadastrar contas de Secretaria na tela **Cursos e matrículas → Usuários**.
 
 ### Contas do gerador opcional
 
