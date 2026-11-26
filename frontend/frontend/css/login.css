@@ -1,0 +1,191 @@
+body.login-body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+}
+
+.brand-panel {
+  position: relative;
+  background: linear-gradient(165deg, var(--color-navy-900) 0%, var(--color-navy-800) 55%, var(--color-navy-700) 100%);
+  color: #fff;
+  padding: 56px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.brand-panel::before,
+.brand-panel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.14;
+}
+.brand-panel::before {
+  width: 420px; height: 420px;
+  background: var(--color-coral);
+  top: -140px; right: -120px;
+}
+.brand-panel::after {
+  width: 300px; height: 300px;
+  background: var(--color-teal);
+  bottom: -110px; left: -80px;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  position: relative;
+  z-index: 1;
+}
+.brand-mark .icon { color: var(--color-coral); width: 26px; height: 26px; }
+
+.brand-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+}
+
+.brand-copy h1 {
+  color: #fff;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand-copy p {
+  margin-top: 16px;
+  color: rgba(255,255,255,0.72);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.brand-chips {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.brand-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.85);
+}
+.brand-chip .icon-sm { color: var(--color-coral); }
+
+.form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.login-box { width: 100%; max-width: 380px; }
+
+.login-box .eyebrow-word {
+  color: var(--color-coral);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.login-box h2 {
+  font-size: 1.7rem;
+  margin-top: 6px;
+}
+
+.login-box .sub {
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.login-form { margin-top: 30px; display: flex; flex-direction: column; gap: 18px; }
+
+.password-input-wrap { position: relative; }
+.password-input-wrap input { width: 100%; padding-right: 82px; }
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  min-width: 62px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-soft);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.password-toggle:hover { background: var(--color-navy-100); color: var(--color-navy-800); }
+.password-toggle:focus-visible { outline: 2px solid var(--color-navy-800); outline-offset: 2px; }
+.match-valid { color: var(--color-teal) !important; }
+
+.input-icon-wrap { position: relative; }
+.input-icon-wrap .icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-soft);
+}
+.input-icon-wrap input { padding-left: 42px; }
+
+.pw-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  border-radius: 6px;
+  color: var(--color-text-soft);
+}
+.pw-toggle:hover { color: var(--color-navy-800); background: var(--color-navy-100); }
+
+.login-form .btn-accent {
+  width: 100%;
+  padding: 13px;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+.login-alert {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--color-red-tint);
+  color: var(--color-red);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.login-alert.show { display: flex; }
+.login-alert .icon-sm { flex-shrink: 0; margin-top: 2px; }
+
+.login-foot {
+  margin-top: 28px;
+  font-size: 0.82rem;
+  color: var(--color-text-soft);
+  text-align: center;
+}
+
+@media (max-width: 880px) {
+  body.login-body { grid-template-columns: 1fr; }
+  .brand-panel { display: none; }
+}

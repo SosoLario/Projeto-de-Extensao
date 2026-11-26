@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel da Gestão — ClassManager</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="app-body">
+
+<div id="toast-stack"></div>
+
+<!-- ===================== SIDEBAR ===================== -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand-mark">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5C4 4.67 4.67 4 5.5 4H12V20H5.5C4.67 20 4 19.33 4 18.5V5.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5.5C20 4.67 19.33 4 18.5 4H12V20H18.5C19.33 20 20 19.33 20 18.5V5.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8H8.2M9 11H8.2M16 8H15.2M16 11H15.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    ClassManager
+  </div>
+
+  <p class="nav-group-label">GESTÃO</p>
+  <ul class="nav-list">
+    <li>
+      <button class="nav-link active" data-section="dashboard">
+        <span class="nav-icon-badge"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="3.5" width="7.5" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="3.5" width="7.5" height="5.5" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="11.5" width="7.5" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="15" width="7.5" height="5.5" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        Visão geral
+      </button>
+    </li>
+    <li>
+      <button class="nav-link" data-section="alunos">
+        <span class="nav-icon-badge"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 20c0-3.31 2.46-6 5.5-6s5.5 2.69 5.5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="17" cy="7.5" r="2.3" stroke="currentColor" stroke-width="1.6"/><path d="M15 20c-.1-2.6 1.2-4.6 3-5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        Alunos
+      </button>
+    </li>
+    <li>
+      <button class="nav-link" data-section="professores">
+        <span class="nav-icon-badge"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 19h8M12 15v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7.5 10.5l2.7 2.2 6.3-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Professores
+      </button>
+    </li>
+    <li>
+      <button class="nav-link" data-section="horarios">
+        <span class="nav-icon-badge"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="5" width="17" height="15" rx="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7.5 13h3M7.5 16.3h5M13.5 13h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        Horários
+      </button>
+    </li>
+    <li><a class="nav-link" href="gestao.html">Cursos e matrículas</a></li>
+    <li><a class="nav-link" href="financeiro.html">Financeiro</a></li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <div class="user-chip">
+      <div class="user-avatar" id="user-avatar">G</div>
+      <div class="user-info">
+        <div class="user-name" id="user-name">Carregando…</div>
+        <div class="user-role">Gestão</div>
+      </div>
+
+    </div>
+    <button class="logout-link" id="logout-btn">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 4H6.5A2.5 2.5 0 0 0 4 6.5v11A2.5 2.5 0 0 0 6.5 20H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M13 8l4 4-4 4M17 12H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Sair
+    </button>
+  </div>
+</aside>
+
+<!-- ===================== ÁREA PRINCIPAL ===================== -->
+<div class="main-area">
+  <header class="topbar">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <button class="btn-icon" id="sidebar-toggle" aria-label="Abrir menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div>
+        <h1 id="page-title">Visão geral</h1>
+        <p class="sub" id="page-subtitle">Resumo da escola em tempo real.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <!-- ---------- DASHBOARD ---------- -->
+    <section class="section-panel" id="section-dashboard">
+      <div class="stat-grid">
+        <div class="card stat-card" style="--stat-color:#3E7BD1; --stat-tint:#E7F0FC;">
+          <div class="stat-card-top">
+            <div class="stat-icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 20c0-3.31 2.46-6 5.5-6s5.5 2.69 5.5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-alunos">—</div>
+            <div class="stat-label">Alunos matriculados</div>
+          </div>
+        </div>
+
+        <div class="card stat-card" style="--stat-color:#7C6FE0; --stat-tint:var(--color-violet-tint);">
+          <div class="stat-card-top">
+            <div class="stat-icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 19h8M12 15v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-professores">—</div>
+            <div class="stat-label">Professores ativos</div>
+          </div>
+        </div>
+
+        <div class="card stat-card" style="--stat-color:#E8935A; --stat-tint:var(--color-amber-tint);">
+          <div class="stat-card-top">
+            <div class="stat-icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="5" width="17" height="15" rx="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17" stroke="currentColor" stroke-width="1.7"/></svg></div>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-turmas">—</div>
+            <div class="stat-label">Turmas/horários ativos</div>
+          </div>
+        </div>
+
+        <div class="card stat-card" style="--stat-color:#1D7A64; --stat-tint:var(--color-teal-tint);">
+          <div class="stat-card-top">
+            <div class="stat-icon-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5 21 19.5H3L12 4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div>
+            <div class="stat-value" id="stat-novos">—</div>
+            <div class="stat-label">Novas matrículas (30 dias)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="card stat-card"><div><div class="stat-value" id="stat-recebido">R$ —</div><div class="stat-label">Recebido neste mês</div></div></div>
+        <div class="card stat-card"><div><div class="stat-value" id="stat-pendente">R$ —</div><div class="stat-label">Mensalidades a vencer</div></div></div>
+        <div class="card stat-card"><div><div class="stat-value" id="stat-atrasado">R$ —</div><div class="stat-label">Mensalidades atrasadas</div></div></div>
+      </div>
+
+      <div class="card" style="padding:22px; margin-bottom:20px;"><div class="panel-head"><h2>Receitas dos últimos seis meses</h2></div><canvas id="grafico-receitas" height="90" aria-label="Gráfico de receitas mensais"></canvas></div>
+      <div class="card" style="padding:22px; margin-bottom:20px;"><div class="panel-head"><h2>Próximas aulas</h2></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Turma</th><th>Professor</th><th>Próxima data</th><th>Horário</th></tr></thead><tbody id="proximas-aulas"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div></div>
+
+      <div class="card" style="padding:22px;">
+        <div class="panel-head" style="margin-bottom:14px;">
+          <h2>Últimos alunos cadastrados</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Aluno</th><th>Nível</th><th>Matrícula</th><th>Status</th></tr>
+            </thead>
+            <tbody id="dashboard-recent-body">
+              <tr><td colspan="4" style="text-align:center; color:var(--color-text-muted);">Carregando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- ALUNOS ---------- -->
+    <section class="section-panel" id="section-alunos" hidden>
+      <div class="panel-head">
+        <h2>Alunos</h2>
+        <div class="panel-head-actions">
+          <div class="search-box">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="6" stroke="currentColor" stroke-width="1.7"/><path d="M19 19l-4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <input type="text" id="alunos-search" placeholder="Buscar aluno…">
+          </div>
+          <button class="btn btn-accent" id="btn-novo-aluno">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Novo aluno
+          </button>
+        </div>
+      </div>
+
+      <div class="card table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Nome</th><th>E-mail</th><th>Nível</th><th>Turma/Horário</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="alunos-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- PROFESSORES ---------- -->
+    <section class="section-panel" id="section-professores" hidden>
+      <div class="panel-head">
+        <h2>Professores</h2>
+        <div class="panel-head-actions">
+          <div class="search-box">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="6" stroke="currentColor" stroke-width="1.7"/><path d="M19 19l-4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <input type="text" id="professores-search" placeholder="Buscar professor…">
+          </div>
+          <button class="btn btn-accent" id="btn-novo-professor">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Novo professor
+          </button>
+        </div>
+      </div>
+
+      <div class="card table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Nome</th><th>E-mail</th><th>Idiomas</th><th>Carga horária</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="professores-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- HORÁRIOS ---------- -->
+    <section class="section-panel" id="section-horarios" hidden>
+      <div class="panel-head">
+        <h2>Horários de aula</h2>
+        <div class="panel-head-actions">
+          <button class="btn btn-accent" id="btn-novo-horario">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Novo horário
+          </button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:20px; overflow-x:auto;">
+        <div class="timetable" id="timetable-grid"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ===================== MODAL ALUNO ===================== -->
+<div class="modal-overlay" id="modal-aluno" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-aluno-title">Novo aluno</h3>
+      <button class="btn-icon modal-close" data-modal="modal-aluno">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <form class="modal-body" id="form-aluno">
+      <input type="hidden" id="aluno-id">
+      <div class="field">
+        <label for="aluno-nome">Nome completo</label>
+        <input type="text" id="aluno-nome" required>
+      </div>
+      <div class="field">
+        <label for="aluno-email">E-mail</label>
+        <input type="email" id="aluno-email" required>
+      </div>
+      <div class="field"><label for="aluno-senha">Senha inicial</label><input type="password" id="aluno-senha" placeholder="Padrão: 123456"></div>
+      <details><summary>Dados pessoais e do responsável</summary>
+        <div class="field"><label>Telefone</label><input id="aluno-telefone"></div><div class="field"><label>CPF</label><input id="aluno-cpf"></div><div class="field"><label>Data de nascimento</label><input id="aluno-nascimento" type="date"></div><div class="field"><label>Endereço</label><input id="aluno-endereco"></div><div class="field"><label>Responsável (menor de idade)</label><input id="aluno-responsavel"></div><div class="field"><label>Telefone do responsável</label><input id="aluno-responsavel-telefone"></div><div class="field"><label>E-mail do responsável</label><input id="aluno-responsavel-email" type="email"></div>
+      </details>
+      <div class="field">
+        <label for="aluno-nivel">Nível de inglês</label>
+        <select id="aluno-nivel" required>
+          <option value="Iniciante">Iniciante</option>
+          <option value="Básico">Básico</option>
+          <option value="Intermediário">Intermediário</option>
+          <option value="Avançado">Avançado</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="aluno-status">Status</label>
+        <select id="aluno-status" required>
+          <option value="ativo">Ativo</option>
+          <option value="trancado">Trancado</option>
+          <option value="inativo">Inativo</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="aluno-horario">Turma / horário</label>
+        <select id="aluno-horario">
+          <option value="">Sem turma definida ainda</option>
+        </select>
+      </div>
+      <div class="modal-foot" style="padding:0;">
+        <button type="button" class="btn btn-ghost modal-close" data-modal="modal-aluno">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar aluno</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== MODAL PROFESSOR ===================== -->
+<div class="modal-overlay" id="modal-professor" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-professor-title">Novo professor</h3>
+      <button class="btn-icon modal-close" data-modal="modal-professor">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <form class="modal-body" id="form-professor">
+      <input type="hidden" id="professor-id">
+      <div class="field">
+        <label for="professor-nome">Nome completo</label>
+        <input type="text" id="professor-nome" required>
+      </div>
+      <div class="field">
+        <label for="professor-email">E-mail</label>
+        <input type="email" id="professor-email" required>
+      </div>
+      <div class="field"><label for="professor-senha">Senha inicial</label><input type="password" id="professor-senha" placeholder="Padrão: 123456"></div>
+      <details><summary>Dados pessoais e comprovações (restritos)</summary>
+        <div class="field"><label>Telefone</label><input id="professor-telefone"></div><div class="field"><label>CPF</label><input id="professor-cpf"></div><div class="field"><label>Data de nascimento</label><input id="professor-nascimento" type="date"></div><div class="field"><label>Endereço</label><input id="professor-endereco"></div><div class="field"><label>Formação</label><input id="professor-formacao"></div><div class="field"><label>Registro profissional</label><input id="professor-registro"></div><div class="field"><label>Comprovantes / observações</label><textarea id="professor-documentos"></textarea></div>
+      </details>
+      <div class="field">
+        <label for="professor-especialidade">Especialidade</label>
+        <input type="text" id="professor-especialidade" placeholder="Ex: Conversação, Business English" required>
+      </div>
+      <div class="field"><label for="professor-idiomas">Idiomas que leciona</label><input type="text" id="professor-idiomas" placeholder="Ex: Inglês, Espanhol" required></div>
+      <div class="field">
+        <label for="professor-carga">Carga horária semanal (horas)</label>
+        <input type="number" id="professor-carga" min="1" max="60" required>
+      </div>
+      <div class="field">
+        <label for="professor-status">Status</label>
+        <select id="professor-status" required>
+          <option value="ativo">Ativo</option>
+          <option value="inativo">Inativo</option>
+        </select>
+      </div>
+      <div class="modal-foot" style="padding:0;">
+        <button type="button" class="btn btn-ghost modal-close" data-modal="modal-professor">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar professor</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== MODAL HORÁRIO ===================== -->
+<div class="modal-overlay" id="modal-horario" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Novo horário</h3>
+      <button class="btn-icon modal-close" data-modal="modal-horario">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <form class="modal-body" id="form-horario">
+      <input type="hidden" id="horario-id">
+      <div class="field">
+        <label for="horario-turma">Nome da turma</label>
+        <input type="text" id="horario-turma" placeholder="Ex: Conversação Avançado" required>
+      </div>
+      <div class="field">
+        <label for="horario-professor">Professor</label>
+        <select id="horario-professor" required></select>
+      </div>
+      <div class="field"><label for="horario-curso">Curso</label><select id="horario-curso" required></select></div>
+      <div class="field">
+        <label for="horario-dia">Dia da semana</label>
+        <select id="horario-dia" required>
+          <option value="Seg">Segunda</option>
+          <option value="Ter">Terça</option>
+          <option value="Qua">Quarta</option>
+          <option value="Qui">Quinta</option>
+          <option value="Sex">Sexta</option>
+          <option value="Sab">Sábado</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="horario-inicio">Horário de início</label>
+        <input type="time" id="horario-inicio" required>
+      </div>
+      <div class="field"><label for="horario-fim">Horário de término</label><input type="time" id="horario-fim" required></div>
+      <div class="field"><label for="horario-capacidade">Vagas máximas</label><input type="number" id="horario-capacidade" min="1" max="100" value="12" required></div>
+      <div class="field"><label for="horario-data-inicio">Data de início</label><input type="date" id="horario-data-inicio" required></div>
+      <div class="field"><label for="horario-data-fim">Data de término (opcional)</label><input type="date" id="horario-data-fim"></div>
+      <div class="field"><label for="horario-status">Situação</label><select id="horario-status"><option value="ativa">Ativa</option><option value="concluída">Concluída</option><option value="cancelada">Cancelada</option></select></div>
+      <div class="modal-foot" style="padding:0;">
+        <button type="button" class="btn btn-ghost" id="cancelar-horario" hidden>Cancelar horário</button>
+        <button type="button" class="btn btn-ghost modal-close" data-modal="modal-horario">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar horário</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== MODAL CONFIRMAR EXCLUSÃO ===================== -->
+<div class="modal-overlay" id="modal-confirm" hidden>
+  <div class="modal" style="max-width:380px;">
+    <div class="modal-body" style="padding-top:24px;">
+      <div style="width:44px;height:44px;border-radius:10px;background:var(--color-red-tint);display:flex;align-items:center;justify-content:center;color:var(--color-red);">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7h14M9.5 7V5.2c0-.66.54-1.2 1.2-1.2h2.6c.66 0 1.2.54 1.2 1.2V7M7 7l.7 11.3c.05.9.8 1.7 1.8 1.7h5c1 0 1.75-.8 1.8-1.7L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 id="confirm-title">Excluir registro?</h3>
+      <p style="color:var(--color-text-muted); font-size:0.9rem;" id="confirm-text">Essa ação não pode ser desfeita.</p>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-ghost modal-close" data-modal="modal-confirm">Cancelar</button>
+      <button type="button" class="btn btn-danger" id="confirm-delete-btn">Excluir</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@0.468.0"></script><script src="js/dashboard.js"></script>
+</body>
+</html>

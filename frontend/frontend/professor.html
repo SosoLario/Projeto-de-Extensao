@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Área do professor — ClassManager</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/configuracoes.css">
+</head>
+
+<body class="app-body">
+    <aside class="sidebar">
+        <div class="brand-mark">ClassManager</div>
+        <p class="nav-group-label">PROFESSOR</p>
+        <ul class="nav-list">
+            <li><button class="nav-link active" data-mode="horarios"><span class="nav-icon-badge">◷</span>Horários</button></li>
+            <li><button class="nav-link" data-mode="frequencia"><span class="nav-icon-badge">✓</span>Frequência</button></li>
+            <li><button class="nav-link" data-mode="turmas"><span class="nav-icon-badge">▣</span>Turmas e chamadas</button></li>
+            <li><button class="nav-link" data-mode="notas"><span class="nav-icon-badge">★</span>Lançar notas</button>
+            </li>
+            <li><button class="nav-link" data-mode="configuracoes"><span class="nav-icon-badge">⚙</span>Perfil e configurações</button></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-chip">
+                <div class="user-avatar" id="user-avatar">P</div>
+                <div class="user-info">
+                    <div class="user-name" id="user-name">Carregando…</div>
+                    <div class="user-role">Professor(a)</div>
+                </div>
+            </div><button class="logout-link" id="sair">↪ Sair</button>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div>
+                <h1>Olá, <span id="nome">…</span></h1>
+                <p class="sub">Organize suas turmas, chamadas e avaliações.</p>
+            </div>
+        </header>
+        <main class="content">
+            <section class="section-panel">
+                <div class="card panel" id="conteudo">
+                    <p>Carregando suas turmas…</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/lucide@0.468.0"></script><script src="js/configuracoes.js"></script><script src="js/professor.js"></script>
+</body>
+
+</html>
