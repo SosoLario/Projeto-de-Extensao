@@ -80,9 +80,25 @@ Não coloque a senha do banco em arquivos do frontend nem em mensagens compartil
 
 ## Acessos de demonstração
 
-O script inicial cria a conta `admin@classmanager.com`. A senha padrão demonstrativa é `admin123`. Os usuários de exemplo são fictícios e usam essa mesma senha. Troque ou recrie as senhas antes de compartilhar a aplicação fora da apresentação acadêmica. Administradores podem cadastrar contas de Secretaria na tela **Cursos e matrículas → Usuários**.
+O script inicial cria a conta principal de administrador e os usuários de exemplo fictícios abaixo, todos utilizando a senha padrão **`admin123`**:
 
-O gerador opcional também cria `secretaria.demo@classmanager.test / Secretaria@123`, `professor.demo@classmanager.test / Professor@123` e `aluno.demo@classmanager.test / Aluno@123`. Todas essas contas e informações são fictícias.
+| Conta | E-mail | Senha |
+| :--- | :--- | :--- |
+| **Administrador** | `admin@classmanager.com` | `admin123` |
+| **Usuário de exemplo** | `bruno.alves@classmanager.com` | `admin123` |
+| **Usuário de exemplo** | `camila.souza@classmanager.com` | `admin123` |
+| **Usuário de exemplo** | `joao.lima@email.com` | `admin123` |
+| **Usuário de exemplo** | `ana.ferreira@email.com` | `admin123` |
+
+Troque ou recrie as senhas antes de compartilhar a aplicação fora de apresentação acadêmica. Administradores podem cadastrar contas de Secretaria na tela **Cursos e matrículas → Usuários**.
+
+### Contas do gerador opcional
+
+O gerador opcional também cria as seguintes contas fictícias:
+
+* **Secretaria:** `secretaria.demo@classmanager.test` / `Secretaria@123`
+* **Professor:** `professor.demo@classmanager.test` / `Professor@123`
+* **Aluno:** `aluno.demo@classmanager.test` / `Aluno@123`
 
 ## Estrutura
 
