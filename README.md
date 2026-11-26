@@ -80,15 +80,16 @@ Não coloque a senha do banco em arquivos do frontend nem em mensagens compartil
 
 ## Acessos de demonstração
 
-O script inicial cria a conta principal de administrador e os usuários de exemplo fictícios abaixo, todos utilizando a senha padrão **`admin123`**:
+O script inicial cria a conta principal de gestão e os usuários de exemplo fictícios abaixo. A senha **`admin123`** é exclusiva da gestão, enquanto professores e alunos seguem o padrão **`<primeiro_nome>123`**:
 
-| Conta | E-mail | Senha |
+| Perfil | E-mail | Senha |
 | :--- | :--- | :--- |
-| **Administrador** | `admin@classmanager.com` | `admin123` |
-| **Usuário de exemplo** | `bruno.alves@classmanager.com` | `admin123` |
-| **Usuário de exemplo** | `camila.souza@classmanager.com` | `admin123` |
-| **Usuário de exemplo** | `joao.lima@email.com` | `admin123` |
-| **Usuário de exemplo** | `ana.ferreira@email.com` | `admin123` |
+| **Gestão** | `admin@classmanager.com` | `admin123` |
+| **Professor** | `bruno.alves@classmanager.com` | `bruno123` |
+| **Professor** | `camila.souza@classmanager.com` | `camila123` |
+| **Aluno** | `ana.ferreira@email.com` | `ana123` |
+| **Aluno** | `joao.lima@email.com` | `joao123` |
+| **Aluno** | `lucas.carmargo@email.com` | `lucas123` |
 
 Troque ou recrie as senhas antes de compartilhar a aplicação fora de apresentação acadêmica. Administradores podem cadastrar contas de Secretaria na tela **Cursos e matrículas → Usuários**.
 
