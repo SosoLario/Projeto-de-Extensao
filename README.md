@@ -80,17 +80,18 @@ Não coloque a senha do banco em arquivos do frontend nem em mensagens compartil
 
 ## Acessos de demonstração
 
-O script inicial cria a conta principal de gestão e os usuários de exemplo fictícios abaixo. A senha **`admin123`** é exclusiva da gestão, enquanto professores e alunos seguem o padrão **`<primeiro_nome>123`**:
+O script inicial cria a conta principal de gestão e os usuários de exemplo fictícios abaixo, cada um com sua própria senha inicial:
 
 | Perfil | E-mail | Senha |
 | :--- | :--- | :--- |
 | **Gestão** | `admin@classmanager.com` | `admin123` |
-| **Professor** | `bruno.alves@classmanager.com` | `bruno123` |
-| **Professor** | `camila.souza@classmanager.com` | `camila123` |
-| **Aluno** | `ana.ferreira@email.com` | `ana123` |
-| **Aluno** | `joao.lima@email.com` | `joao123` |
-| **Aluno** | `lucas.carmargo@email.com` | `lucas123` |
+| **Professor** | `bruno.alves@classmanager.com` | `Alves@842` |
+| **Professor** | `camila.souza@classmanager.com` | `Souza#519` |
+| **Aluno** | `ana.ferreira@email.com` | `Ferreira@307` |
+| **Aluno** | `joao.lima@email.com` | `Lima#764` |
+| **Aluno** | `lucas.carmargo@email.com` | `Carmargo@628` |
 
+Todos os usuários podem alterar a própria senha a qualquer momento diretamente no sistema. Recomenda-se trocar essas senhas antes de compartilhar a aplicação fora de apresentação acadêmica. Administradores também podem cadastrar novas contas de Secretaria na tela **Cursos e matrículas → Usuários**.
 
 ### Contas do gerador opcional
 
@@ -99,7 +100,6 @@ O gerador opcional também cria as seguintes contas fictícias:
 * **Secretaria:** `secretaria.demo@classmanager.test` / `Secretaria@123`
 * **Professor:** `professor.demo@classmanager.test` / `Professor@123`
 * **Aluno:** `aluno.demo@classmanager.test` / `Aluno@123`
-
 ## Estrutura
 
 ```text
